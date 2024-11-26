@@ -34,7 +34,36 @@ public class FighterController : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 1000f))
                 {
                     Debug.DrawRay(rayOrigin, direction * hit.distance, Color.yellow);
-                    Debug.Log("bubble");
+                    if (hit.transform.gameObject.tag == "Bubble") {
+
+                        var r = Random.Range(0,100);
+
+                        if (r <= 20)
+                        {
+
+                            fighter._state = new GuardState();
+                        }
+                        else if (r > 20 && r <= 40)
+                        {
+                            fighter._state = new MahTawaState();
+                        }
+                        else if (r > 40 && r <= 60)
+                        {
+                            fighter._state = new JasunbalTolioState();
+                        }
+                        else if (r > 60 && r <= 80)
+                        {
+                            fighter._state = new MondolioRurioState();
+                        }
+                        else
+                        {
+                            fighter._state = new DubonTolioState();
+                        }
+
+                        Debug.Log("bubble");
+
+                    }
+                   
                 }
                 else
                 {
@@ -42,7 +71,7 @@ public class FighterController : MonoBehaviour
                     Debug.Log("no hit");
                 }
             }
-
+            /*
             if (Input.GetKeyDown(KeyCode.J))
             {
                 fighter._state = new GuardState();
@@ -62,7 +91,7 @@ public class FighterController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.M))
             {
                 fighter._state = new DubonTolioState();
-            }
+            }*/
         }
         public void update(FighterController fighter)
         {
@@ -150,4 +179,29 @@ public class FighterController : MonoBehaviour
         _state.update(this);
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("A esfera entrou em um gatilho com: " + other.gameObject.name);
+
+        // Exemplo: Verifica a tag do objeto
+        if (other.CompareTag("Bubble"))
+        {
+            Debug.Log("A esfera entrou em contato com um inimigo!");
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Exibe informações sobre o objeto que colidiu
+        Debug.Log("Colisão detectada com: " + collision.gameObject.name);
+
+        // Verifica se o objeto tem uma tag específica
+        if (collision.gameObject.CompareTag("Bubble"))
+        {
+            Debug.Log("O Player colidiu com a malha!");
+        }
+    }
+
+
 }

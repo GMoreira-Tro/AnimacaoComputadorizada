@@ -40,9 +40,9 @@ public class EnemySpawner : MonoBehaviour
                     onLeft = -1;
                 }
 
-                var nextX = fx + onLeft * Random.Range(20f, 25f);
+                var nextX = fx + onLeft * Random.Range(20f, 50f);
                 var nextY = fy + Random.Range(0f, 20f);
-                var nextZ = fz + inFront * Random.Range(20f, 25f);
+                var nextZ = fz + inFront * Random.Range(20f, 50f);
 
                 var newBubble = Instantiate(bubble, new Vector3(nextX, nextY, nextZ), Quaternion.identity);
             }

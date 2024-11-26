@@ -21,8 +21,8 @@ public class Bubble : MonoBehaviour
     {
         frames = 0;
         subindo = true;
-        horizontalFrames = Random.Range(0, 360);
-        verticalFrames = Random.Range(0,360);
+        horizontalFrames = Random.Range(0, 720);
+        verticalFrames = Random.Range(0,720);
     }
 
     // Update is called once per frame
@@ -44,9 +44,9 @@ public class Bubble : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
             horizontalFrames++;
-            if (horizontalFrames >= 360)
+            if (horizontalFrames >= 720)
             {
-                paraEsquerda = false;
+                //paraEsquerda = false;
             }
         }
         else
@@ -55,7 +55,7 @@ public class Bubble : MonoBehaviour
             horizontalFrames--;
             if (horizontalFrames <= 0)
             {
-                paraEsquerda = true;
+                //paraEsquerda = true;
             }
         }
 
@@ -63,7 +63,7 @@ public class Bubble : MonoBehaviour
         {
             transform.position += Vector3.up *speed  * Time.deltaTime;
             verticalFrames++;
-            if (verticalFrames >= 360)
+            if (verticalFrames >= 720)
             {
                 subindo = false;
             }
@@ -83,9 +83,9 @@ public class Bubble : MonoBehaviour
         {
             transform.position += Vector3.forward * speed * Time.deltaTime;
             depthFrames++;
-            if (depthFrames >= 360)
+            if (depthFrames >= 720)
             {
-                paraFrente = false;
+                //paraFrente = false;
             }
         }
         else
@@ -94,9 +94,55 @@ public class Bubble : MonoBehaviour
             depthFrames--;
             if (depthFrames <= 0)
             {
-                paraFrente = true;
+               // paraFrente = true;
             }
         }
 
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Exibe informações sobre o objeto que colidiu
+        Debug.Log("Colisão detectada com: " + collision.gameObject.name);
+
+        // Verifica se o objeto tem uma tag específica
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("O Player colidiu com a malha!");
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        Debug.Log("Ainda em colisão com: " + collision.gameObject.name);
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Colisão terminada com: " + collision.gameObject.name);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("A esfera entrou em um gatilho com: " + other.gameObject.name);
+
+        // Exemplo: Verifica a tag do objeto
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("A esfera entrou em contato com um inimigo!");
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        Debug.Log("A esfera está dentro de um gatilho com: " + other.gameObject.name);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log("A esfera saiu do gatilho com: " + other.gameObject.name);
+    }
+
 }
