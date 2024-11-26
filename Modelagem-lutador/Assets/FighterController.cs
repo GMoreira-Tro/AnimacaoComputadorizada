@@ -168,6 +168,12 @@ public class FighterController : MonoBehaviour
     private Animator animator;
     private bool entardecendo;
 
+    public Material skyboxMaterial; // O material do Skybox
+    public Light directionalLight; // A luz que representa o Sol
+    public float dayDuration = 30f; // Duração de um ciclo completo (em segundos)
+
+    private float timeElapsed = 0f;
+
     public Camera mainCamera;
 
     public Color color1 = Color.cyan;
@@ -175,6 +181,8 @@ public class FighterController : MonoBehaviour
     public float duration = 3.0F;
     public int framesDay = 0;
     public int secondsDay = 0;
+
+
 
     void Start()
     {
@@ -190,7 +198,7 @@ public class FighterController : MonoBehaviour
     {
         _state.handleInput(this);
         _state.update(this);
-
+        /*
         framesDay++;
         if (framesDay >= 60) {
             framesDay = 0;
@@ -211,6 +219,24 @@ public class FighterController : MonoBehaviour
                     entardecendo = !entardecendo;
                 }
             }
+        }*/
+
+        if (skyboxMaterial != null && directionalLight != null)
+        {
+            // Calcula o progresso do dia (0 a 1)
+            timeElapsed += Time.deltaTime;
+            float dayProgress = Mathf.Max(Mathf.PingPong(timeElapsed / dayDuration, 1f),0.25f);
+
+            // Ajusta a exposição do Skybox (brilho)
+            float exposure = Mathf.Lerp(0.2f, 1.2f, dayProgress); // Valores de exposição para noite e dia
+            skyboxMaterial.SetFloat("_Exposure", exposure);
+
+            // Ajusta a rotação da luz (para simular o Sol se movendo)
+            float sunAngle = Mathf.Lerp(0, 360, dayProgress);
+            directionalLight.transform.rotation = Quaternion.Euler(sunAngle - 90, 170, 0);
+
+            // Ajusta a intensidade da luz para dia e noite
+            directionalLight.intensity = Mathf.Lerp(0.1f, 1.0f, dayProgress);
         }
     }
 
