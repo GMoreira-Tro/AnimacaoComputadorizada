@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         frames++;
-        if (frames >= 60)
+        if (frames >= 360)
         {
             frames = 0;
             if (Random.Range(-10f,10f) >= 0f) {

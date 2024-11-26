@@ -166,11 +166,24 @@ public class FighterController : MonoBehaviour
 
     private FighterState _state;
     private Animator animator;
+    private bool entardecendo;
+
+    public Camera mainCamera;
+
+    public Color color1 = Color.cyan;
+    public Color color2 = Color.blue;
+    public float duration = 3.0F;
+    public int framesDay = 0;
+    public int secondsDay = 0;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         _state = new BouncingState();
+
+        mainCamera = Camera.main;
+        mainCamera.backgroundColor = color1;
+        entardecendo = true;
     }
 
     void Update()
@@ -178,6 +191,27 @@ public class FighterController : MonoBehaviour
         _state.handleInput(this);
         _state.update(this);
 
+        framesDay++;
+        if (framesDay >= 60) {
+            framesDay = 0;
+            secondsDay++;
+            if (secondsDay >= 60) {
+                secondsDay = 0;
+                float t = Mathf.PingPong(Time.time, duration) / duration;
+                if (entardecendo)
+                {
+                    mainCamera.backgroundColor = Color.Lerp(color1, color2, t);
+                }
+                else
+                {
+                    mainCamera.backgroundColor = Color.Lerp(color2, color1, t);
+                }
+                if (t == 1)
+                {
+                    entardecendo = !entardecendo;
+                }
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
