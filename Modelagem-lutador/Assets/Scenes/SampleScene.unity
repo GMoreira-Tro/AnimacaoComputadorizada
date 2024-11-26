@@ -182,6 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3403099b6d7822d41adbd3fccad58787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raySpacing: 1
+  eyesPosition: {fileID: 1803833784}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +450,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 547422403}
   m_SourcePrefab: {fileID: 100100000, guid: b25d10437ecacd44e9e7a18c82ba3bad, type: 3}
+--- !u!4 &1803833784 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5047487860619740959, guid: b25d10437ecacd44e9e7a18c82ba3bad, type: 3}
+  m_PrefabInstance: {fileID: 1499997000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
