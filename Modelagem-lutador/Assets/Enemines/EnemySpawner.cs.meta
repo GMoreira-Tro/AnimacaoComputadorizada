@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - fighter: {instanceID: 0}
   - bubble: {fileID: 573348817359779778, guid: 6b99cd7fd32cbbf4f91bd622a29234ab, type: 3}
+  - ghost: {fileID: 6056731501115312186, guid: 45518453afe3db84ea0a76baa78e0031, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

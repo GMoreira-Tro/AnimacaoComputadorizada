@@ -18,8 +18,8 @@ public class FighterController : MonoBehaviour
         {
 
             fighter.transform.RotateAround(fighter.transform.position, Vector3.up, 20 * Time.deltaTime);
-
-
+            
+            //verificar inimigos a frente
             for (int i = 0; i < 5; i++)
             {
                 RaycastHit hit;
@@ -34,33 +34,29 @@ public class FighterController : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 1000f))
                 {
                     Debug.DrawRay(rayOrigin, direction * hit.distance, Color.yellow);
-                    if (hit.transform.gameObject.tag == "Bubble") {
+                    if (hit.transform.gameObject.tag == "Bubble" || hit.transform.gameObject.tag == "Ghost") {
 
-                        var r = Random.Range(0,100);
+                        fighter.transform.position += fighter.transform.forward * Time.deltaTime;
+
+                        var r = Random.Range(0,60);
 
                         if (r <= 20)
                         {
-
+                            //defesa
                             fighter._state = new GuardState();
                         }
                         else if (r > 20 && r <= 40)
                         {
-                            fighter._state = new MahTawaState();
-                        }
-                        else if (r > 40 && r <= 60)
-                        {
+                            //chute sobre passo para frente
                             fighter._state = new JasunbalTolioState();
-                        }
-                        else if (r > 60 && r <= 80)
-                        {
-                            fighter._state = new MondolioRurioState();
                         }
                         else
                         {
+                            //pedalada 
                             fighter._state = new DubonTolioState();
                         }
 
-                        Debug.Log("bubble");
+                        Debug.Log("bubble front");
 
                     }
                    
@@ -71,25 +67,78 @@ public class FighterController : MonoBehaviour
                     Debug.Log("no hit");
                 }
             }
+
+            //para o lado
+            for (int i = 0; i < 5; i++)
+            {
+                RaycastHit hit;
+
+                Vector3 direction = (fighter.transform.right * (i - 2) * fighter.raySpacing).normalized;
+
+                // Usar a posição dos olhos como origem do raio
+                Vector3 rayOrigin = fighter.eyesPosition.position;
+
+                Ray ray = new Ray(rayOrigin, direction);
+
+                if (Physics.Raycast(ray, out hit, 1000f))
+                {
+                    Debug.DrawRay(rayOrigin, direction * hit.distance, Color.yellow);
+                    if (hit.transform.gameObject.tag == "Bubble" || hit.transform.gameObject.tag == "Ghost")
+                    {
+
+                        fighter.transform.position += fighter.transform.right * Time.deltaTime;
+
+                        var r = Random.Range(0, 40);
+                         if (r <= 20)
+                        {
+                            //soco cruzado e girando para o lado
+                            fighter._state = new MahTawaState();
+                        }
+                        else if (r > 20 && r <= 40)
+                        {
+                            //chute giratório para o lado
+                            fighter._state = new MondolioRurioState();
+                        }
+                        else
+                        {
+                            //pedalada 
+                            //fighter._state = new DubonTolioState();
+                        }
+
+                        Debug.Log("bubble right");
+
+                    }
+
+                }
+                else
+                {
+                    Debug.DrawRay(rayOrigin, direction * 10f, Color.red);
+                    Debug.Log("no hit");
+                }
+            }
+
+
             /*
             if (Input.GetKeyDown(KeyCode.J))
             {
+            //defesa
                 fighter._state = new GuardState();
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
+            //soco cruzado e girando para o lado
                 fighter._state = new MahTawaState();
             }
             if (Input.GetKeyDown(KeyCode.L))
-            {
+            {//chute sobre passo para frente
                 fighter._state = new JasunbalTolioState();
             }
             if (Input.GetKeyDown(KeyCode.N))
-            {
+            {//chute giratório para o lado
                 fighter._state = new MondolioRurioState();
             }
             if (Input.GetKeyDown(KeyCode.M))
-            {
+            {//pedalada 
                 fighter._state = new DubonTolioState();
             }*/
         }
@@ -182,7 +231,7 @@ public class FighterController : MonoBehaviour
     public int framesDay = 0;
     public int secondsDay = 0;
 
-
+    public float dayProgress;
 
     void Start()
     {
@@ -225,7 +274,7 @@ public class FighterController : MonoBehaviour
         {
             // Calcula o progresso do dia (0 a 1)
             timeElapsed += Time.deltaTime;
-            float dayProgress = Mathf.Max(Mathf.PingPong(timeElapsed / dayDuration, 1f),0.25f);
+            dayProgress = Mathf.Max(Mathf.PingPong(timeElapsed / dayDuration, 1f),0.25f);
 
             // Ajusta a exposição do Skybox (brilho)
             float exposure = Mathf.Lerp(0.2f, 1.2f, dayProgress); // Valores de exposição para noite e dia
@@ -237,6 +286,8 @@ public class FighterController : MonoBehaviour
 
             // Ajusta a intensidade da luz para dia e noite
             directionalLight.intensity = Mathf.Lerp(0.1f, 1.0f, dayProgress);
+
+            Debug.Log("Day progress: " + dayProgress);
         }
     }
 

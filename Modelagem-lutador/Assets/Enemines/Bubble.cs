@@ -130,7 +130,7 @@ public class Bubble : MonoBehaviour
         // Exemplo: Verifica a tag do objeto
         if (other.CompareTag("Player"))
         {
-            Debug.Log("A esfera entrou em contato com um inimigo!");
+            Debug.Log("A esfera entrou em contato com um player!");
             Destroy(gameObject);
         }
     }
