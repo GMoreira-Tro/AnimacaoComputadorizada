@@ -287,7 +287,7 @@ public class FighterController : MonoBehaviour
             // Ajusta a intensidade da luz para dia e noite
             directionalLight.intensity = Mathf.Lerp(0.1f, 1.0f, dayProgress);
 
-            Debug.Log("Day progress: " + dayProgress);
+            //Debug.Log("Day progress: " + dayProgress);
         }
     }
 

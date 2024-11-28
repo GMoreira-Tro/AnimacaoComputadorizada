@@ -3972,3 +3972,71 @@ Memory consumption went from 88.4 MB to 88.4 MB.
 Total: 3.631300 ms (FindLiveObjects: 0.033700 ms CreateObjectMapping: 0.006200 ms MarkObjects: 3.561200 ms  DeleteObjects: 0.028600 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 77670.083690 seconds.
+  path: Assets/Enemines/CubeGhost.prefab
+  artifactKey: Guid(45518453afe3db84ea0a76baa78e0031) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemines/CubeGhost.prefab using Guid(45518453afe3db84ea0a76baa78e0031) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '144e38b7887e486b7aa42924ccbf02ff') in 0.9087894 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 157
+
+========================================================================
+Received Import Request.
+  Time since last request: 603.466959 seconds.
+  path: Assets/ghost/ghost_3d
+  artifactKey: Guid(a9afebd86fe95db4d9c384d3f73c2907) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d using Guid(a9afebd86fe95db4d9c384d3f73c2907) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ca18c58cd08dc9c64c1b305fc54a35d6') in 0.002418 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.229389 seconds.
+  path: Assets/ghost/ghost_3d/Pbr
+  artifactKey: Guid(c0d931d8190e7564495d25da42eba0d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d/Pbr using Guid(c0d931d8190e7564495d25da42eba0d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c4004ad8ef91595a638561cddf04b428') in 0.0007796 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.165597 seconds.
+  path: Assets/ghost/ghost_3d/Pbr/base.obj
+  artifactKey: Guid(2a532318e649e644eb5d7a7b5666dd5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d/Pbr/base.obj using Guid(2a532318e649e644eb5d7a7b5666dd5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '40c202d82490da3b3ea4e87309053d15') in 0.2973002 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/ghost/ghost_3d/Pbr/texture_normal.png
+  artifactKey: Guid(88d266341c242ad42a3fba470ffb853c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d/Pbr/texture_normal.png using Guid(88d266341c242ad42a3fba470ffb853c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ac35e95198fecc9274dcf751b6e124fb') in 0.0361094 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/ghost/ghost_3d/Pbr/texture_metallic.png
+  artifactKey: Guid(5fb8e0876f7fd444590ae67caba10509) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d/Pbr/texture_metallic.png using Guid(5fb8e0876f7fd444590ae67caba10509) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '43ef1e0235f8863cedf2107c1abaa396') in 0.0112342 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000090 seconds.
+  path: Assets/ghost/ghost_3d/Pbr/texture_pbr.png
+  artifactKey: Guid(5d165742da770cf409f75d55719893d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d/Pbr/texture_pbr.png using Guid(5d165742da770cf409f75d55719893d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '20cd9fc5de6ffcfa4e241362ff1ac50d') in 0.0091021 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/ghost/ghost_3d/Pbr/texture_roughness.png
+  artifactKey: Guid(169aa11a77563f142bb4b09e0fb008cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ghost/ghost_3d/Pbr/texture_roughness.png using Guid(169aa11a77563f142bb4b09e0fb008cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8e8b384e87a5eb1dc636cdc241bdfd0b') in 0.0100439 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
